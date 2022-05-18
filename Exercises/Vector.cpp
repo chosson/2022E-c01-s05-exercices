@@ -45,7 +45,7 @@ Vector::Vector(span<const int> values) {
 
 Vector::~Vector() {
 	// Pour désallouer, on réutilise notre resize().
-	resize(0);
+	clear();
 }
 
 Vector& Vector::operator=(const Vector& other) {
@@ -53,7 +53,7 @@ Vector& Vector::operator=(const Vector& other) {
 	if (&other == this)
 		return *this;
 	// Pourrait optimiser en ne réallouant pas si on a l'espace suffisant.
-	resize(0);
+	clear();
 	resize(other.size_);
 	for (int i : range(other.size_))
 		values_[i] = other.values_[i];
@@ -62,7 +62,7 @@ Vector& Vector::operator=(const Vector& other) {
 }
 
 Vector& Vector::operator=(Vector&& other) {
-	resize(0);
+	clear();
 	// On « vole » les ressources de l'autre objet.
 	values_ = move(other.values_);
 	size_ = other.size_;

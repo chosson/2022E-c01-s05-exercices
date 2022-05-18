@@ -44,6 +44,7 @@ public:
 	int getSize() const;
 
 	void resize(int size);
+	void clear() { resize(0); }
 	bool hasSameSize(const Vector& other) const;
 
 	T& operator[](int index);
@@ -104,7 +105,7 @@ Vector<T>::Vector(span<const T> values) {
 template <typename T>
 Vector<T>::~Vector() {
 	// Pour désallouer, on réutilise notre resize().
-	resize(0);
+	clear();
 }
 
 template <typename T>
@@ -113,7 +114,7 @@ Vector<T>& Vector<T>::operator=(const Vector& other) {
 	if (&other == this)
 		return *this;
 	// Pourrait optimiser en ne réallouant pas si on a l'espace suffisant.
-	resize(0);
+	clear();
 	resize(other.size_);
 	for (int i : range(other.size_))
 		values_[i] = other.values_[i];
@@ -124,7 +125,7 @@ Vector<T>& Vector<T>::operator=(const Vector& other) {
 template <typename T>
 template <typename U>
 Vector<T>& Vector<T>::operator=(const Vector<U>& other) {
-	resize(0);
+	clear();
 	resize(other.size_);
 	for (int i : range(other.size_))
 		values_[i] = T(other.values_[i]);
@@ -133,7 +134,7 @@ Vector<T>& Vector<T>::operator=(const Vector<U>& other) {
 
 template <typename T>
 Vector<T>& Vector<T>::operator=(Vector&& other) {
-	resize(0);
+	clear();
 	// On « vole » les ressources de l'autre objet.
 	values_ = move(other.values_);
 	size_ = other.size_;

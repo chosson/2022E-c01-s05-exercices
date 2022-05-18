@@ -22,8 +22,8 @@ using namespace iter;
 template <typename T>
 pair<function<T(T)>, function<T(T)>> generateCurves(T a, T b, T c) {
 	return {
-		[=] (T x) { return a * x + b; },
-		[=] (T x) { return a * x*x + b * x + c; }
+		[=](T x) { return a * x + b; },
+		[=](T x) { return a * x*x + b * x + c; }
 	};
 }
 

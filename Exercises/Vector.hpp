@@ -36,6 +36,7 @@ public:
 	int getSize() const;
 
 	void resize(int size);
+	void clear() { resize(0); }
 	bool hasSameSize(const Vector& other) const;
 
 	int& operator[](int index);

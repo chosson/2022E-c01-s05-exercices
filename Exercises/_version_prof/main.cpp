@@ -59,7 +59,7 @@ void runPrintExample() {
 	print3(cout, arr); cout << "\n";
 	print3(cout, vec); cout << "\n";
 	print3(cout, deq); cout << "\n";
-	//print3(cout, 42); cout << "\n"; // Erreur dans le for (pas capable d'itérer sur 42).
+	//print3(cout, 42); cout << "\n"; // Erreur dans le for (pas capable d'itÃ©rer sur 42).
 	print4(cout, vec); cout << "\n";
 	//print4(cout, deq); cout << "\n";
 }
@@ -83,7 +83,7 @@ void runVectorExample() {
 		Vector<Fraction> bar(values2);
 		Vector<int> qux(values3);
 
-		auto fn = [=, &spam = foo] (int i) {
+		auto fn = [=, &spam = foo](int i) {
 			cout << spam[i] << " " << bar[i] << "\n";
 		};
 		fn(1);
@@ -105,7 +105,7 @@ void runLambdaExample() {
 		void print() {
 			val = 9000;
 			string foo = "hello";
-			function<void()> fn = [=] () mutable {
+			function<void()> fn = [=]() mutable {
 				cout << foo << "\n";
 				foo = "wurld";
 			};
